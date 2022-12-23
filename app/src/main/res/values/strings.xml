@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">android-mvi</string>
+    <string name="poc_get_user">Recuperar Usuarios</string>
+    <string name="poc_retry">Volver a intentar</string>
+    <string name="poc_no_data_has_been_found">No se han encontrado datos.</string>
+    <string name="poc_an_unexpected_error_occurred">Ocurrió un error inesperado.</string>
+    <string name="poc_pressing_the_bottom_button_will_launch_a_user_intent">Estado del modelo inicial:\n \n  DefaultUiState \n \n Al presionar el botón inferior se dará inicio a un Intent de usuario.</string>
+    <string name="poc_the_state_model_was_changed_to_loadinguistate">Estado del modelo cambiado:\n \n  LoadingUiState \n \n La vista observó-escuchó un nuevo estado y renderizó la UI.</string>
+    <string name="poc_an_unexpected_error_occurred_info_unexpected_error_occurred_info">Estado del modelo cambiado:\n \n  ErrorUiState \n \n La vista observó-escuchó un nuevo estado y renderizó la UI.</string>
+    <string name="poc_no_data_has_been_found_info">Estado del modelo cambiado:\n \n  EmptyUiState \n \n La vista observó-escuchó un nuevo estado y renderizó la UI.</string>
+    <string name="poc_display_info">Estado del modelo cambiado:\n \n  DisplayUiState \n \n La vista observó-escuchó un nuevo estado y renderizó la UI.</string>
+</resources>
