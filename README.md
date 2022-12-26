@@ -223,6 +223,7 @@ class UserIntentHandler {
 
 ## Objetivos
 - Exponer conceptualmente cómo se constituye el flujo de MVI.
-- Crear un flujo MVI, en vivo, desde cero.
+- Aplicar flujo MVI en proyecto.
+- Crear un flujo MVI en repositorio de evaluación.
 
 
