@@ -219,6 +219,10 @@ class UserIntentHandler {
 }
 ```
 
+- **Paso de datos entre componentes**: Si se necesita pasar datos entre componentes se pueden utilizar ```data class``` en las ```sealed class```. Ejemplo:
+
+```object ErrorUiState : UserUiState()``` cambia a ```data class ErrorUiState(val message: String) : UserUiState()```
+
 ![image](https://user-images.githubusercontent.com/104868802/209144660-5865736b-6f19-48b8-ac46-c175d4bdd91b.png)
 
 ## Objetivos
