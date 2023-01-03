@@ -4,9 +4,9 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.navigation.NavGraphBuilder
-import cl.mobdev.features.mvi.presentation.user.UserViewModel
-import cl.mobdev.features.mvi.ui.listuser.UserIntentHandler
-import cl.mobdev.features.mvi.ui.listuser.UserScreen
+import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingViewModel
+import cl.mobdev.features.mvi.ui.listshopping.ShoppingIntentHandler
+import cl.mobdev.features.mvi.ui.listshopping.ListShoppingScreen
 import com.google.accompanist.navigation.animation.composable
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -15,8 +15,8 @@ import kotlinx.coroutines.FlowPreview
 @ExperimentalCoroutinesApi
 @ExperimentalAnimationApi
 internal fun NavGraphBuilder.userNav(
-    viewModel: UserViewModel,
-    intentHandler: UserIntentHandler,
+    viewModel: ListShoppingViewModel,
+    intentHandler: ShoppingIntentHandler,
 ) = composable(
     route = POCRoutes.User.path,
 ) {
@@ -25,8 +25,7 @@ internal fun NavGraphBuilder.userNav(
         viewModel.uiState()
     }.collectAsState(initial = viewModel.defaultUiState)
 
-    UserScreen(
-        viewModel = viewModel,
+    ListShoppingScreen(
         intentHandler = intentHandler,
         uiState = userUiState,
     )

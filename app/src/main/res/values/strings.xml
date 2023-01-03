@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">android-mvi</string>
-    <string name="poc_get_user">Recuperar Usuarios</string>
+    <string name="app_name">Evaluación MVI</string>
+    <string name="poc_get_list_shopping">Recuperar Listado</string>
     <string name="poc_retry">Volver a intentar</string>
     <string name="poc_no_data_has_been_found">No se han encontrado datos.</string>
     <string name="poc_an_unexpected_error_occurred">Ocurrió un error inesperado.</string>
@@ -9,4 +9,6 @@
     <string name="poc_an_unexpected_error_occurred_info_unexpected_error_occurred_info">Estado del modelo cambiado:\n \n  ErrorUiState \n \n La vista observó-escuchó un nuevo estado y renderizó la UI.</string>
     <string name="poc_no_data_has_been_found_info">Estado del modelo cambiado:\n \n  EmptyUiState \n \n La vista observó-escuchó un nuevo estado y renderizó la UI.</string>
     <string name="poc_display_info">Estado del modelo cambiado:\n \n  DisplayUiState \n \n La vista observó-escuchó un nuevo estado y renderizó la UI.</string>
+    <string name="poc_add_an_item">Añade un item</string>
+    <string name="poc_add_item">Agregar item</string>
 </resources>

@@ -5,11 +5,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 internal class POCDataRepository {
+    val listShopping = mutableListOf("Tomates", "Arroz", "Pollo", "Arvejas")
 
-    fun getListUser(): Flow<List<String>> = flow {
-        val listUser = listOf<String>("Juan", "Carlos", "Nicolle", "María")
-        delay(6000)
-        //throw RuntimeException() //Descomentar para generar error y probar.
-        emit(listUser)
+    fun getListShopping(): Flow<List<String>> = flow {
+        delay(3000)
+        emit(listShopping)
+    }
+    fun addItemShopping(itemShopping: String): Flow<List<String>> = flow {
+        listShopping.add(itemShopping)
+        emit(listShopping)
     }
 }

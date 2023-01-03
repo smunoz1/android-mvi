@@ -9,6 +9,7 @@ import cl.mobdev.features.mvi.ui.theme.MviTheme
 import cl.mobdev.features.mvi.navigation.MviNavGraph
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.coroutineScope
 
 @ExperimentalCoroutinesApi
 @FlowPreview
