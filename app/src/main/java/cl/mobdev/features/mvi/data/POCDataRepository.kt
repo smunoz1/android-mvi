@@ -8,7 +8,7 @@ internal class POCDataRepository {
     val listShopping = mutableListOf("Tomates", "Arroz", "Pollo", "Arvejas")
 
     fun getListShopping(): Flow<List<String>> = flow {
-        delay(3000)
+        delay(2000)
         emit(listShopping)
     }
     fun addItemShopping(itemShopping: String): Flow<List<String>> = flow {

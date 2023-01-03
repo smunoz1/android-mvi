@@ -2,9 +2,7 @@ package cl.mobdev.features.mvi.presentation.listshopping
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingAction.AddItemListShoppingAction
 import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingAction.GetListListShoppingAction
-import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUIntent.PressingBtnAddItemListShoppingUIntent
 import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUIntent.PressingBtnGetListListShoppingUIntent
 import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUIntent.RetryUIntent
 import kotlinx.coroutines.CoroutineScope
@@ -49,7 +47,6 @@ internal class ListShoppingViewModel : ViewModel() {
         return when (this) {
             is PressingBtnGetListListShoppingUIntent -> GetListListShoppingAction
             is RetryUIntent -> GetListListShoppingAction
-            is PressingBtnAddItemListShoppingUIntent -> AddItemListShoppingAction(this.itemShopping)
         }
     }
 

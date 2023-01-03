@@ -7,10 +7,4 @@ internal sealed class ListShoppingResult {
         object Error : GetListListShoppingResult()
         object Empty : GetListListShoppingResult()
     }
-
-    sealed class AddItemListShoppingResult : ListShoppingResult() {
-        object InProgress : AddItemListShoppingResult()
-        data class Success(val listUser: List<String>) : AddItemListShoppingResult()
-        object Error : AddItemListShoppingResult()
-    }
 }

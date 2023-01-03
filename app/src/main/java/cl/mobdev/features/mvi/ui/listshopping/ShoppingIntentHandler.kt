@@ -1,8 +1,6 @@
 package cl.mobdev.features.mvi.ui.listshopping
 
 import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUIntent
-import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUIntent.PressingBtnAddItemListShoppingUIntent
-import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUIntent.PressingBtnGetListListShoppingUIntent
 import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUIntent.RetryUIntent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,7 +18,7 @@ class ShoppingIntentHandler {
 
     fun getListShoppingUIntent() {
         coroutineScope?.launch {
-            shoppingIntents.emit(PressingBtnGetListListShoppingUIntent)
+
         }
     }
 
@@ -32,9 +30,7 @@ class ShoppingIntentHandler {
 
     fun addItemShoppingUIntent(itemShopping: String) {
         coroutineScope?.launch {
-            shoppingIntents.emit(PressingBtnAddItemListShoppingUIntent(
-                itemShopping = itemShopping
-            ))
+
         }
     }
 }

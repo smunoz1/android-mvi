@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Evaluación MVI</string>
-    <string name="poc_get_list_shopping">Recuperar Listado</string>
+    <string name="poc_get_list_shopping">Recuperar listado de compras</string>
     <string name="poc_retry">Volver a intentar</string>
     <string name="poc_no_data_has_been_found">No se han encontrado datos.</string>
     <string name="poc_an_unexpected_error_occurred">Ocurrió un error inesperado.</string>

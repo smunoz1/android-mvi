@@ -1,5 +1,6 @@
 package cl.mobdev.features.mvi.presentation.listshopping
 
+import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingResult.GetListListShoppingResult
 import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUiState.DefaultUiState
 import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUiState.DisplayListShoppingUiState
 import cl.mobdev.features.mvi.presentation.listshopping.ListShoppingUiState.EmptyUiState
@@ -19,35 +20,26 @@ internal class ListShoppingReducer {
     }
 
     private infix fun LoadingUiState.reduceWith(result: ListShoppingResult) = when (result) {
-        is ListShoppingResult.GetListListShoppingResult.InProgress -> LoadingUiState
-        is ListShoppingResult.GetListListShoppingResult.Success -> DisplayListShoppingUiState(
-            listShopping = result.listUser
-        )
-        is ListShoppingResult.GetListListShoppingResult.Error -> ErrorUiState
-        is ListShoppingResult.GetListListShoppingResult.Empty -> EmptyUiState
-        is ListShoppingResult.AddItemListShoppingResult.Error -> ErrorUiState
-        is ListShoppingResult.AddItemListShoppingResult.Success -> DisplayListShoppingUiState(
-            listShopping = result.listUser
-        )
+        is GetListListShoppingResult.Success -> this
+        is GetListListShoppingResult.Error -> ErrorUiState
+        is GetListListShoppingResult.Empty -> EmptyUiState
         else -> throw unsupportedReduceCase()
     }
 
-    private infix fun DisplayListShoppingUiState.reduceWith(result: ListShoppingResult) =
-        when (result) {
-            is ListShoppingResult.AddItemListShoppingResult.InProgress -> LoadingUiState
-            else -> throw unsupportedReduceCase()
-        }
+    private infix fun DisplayListShoppingUiState.reduceWith(result: ListShoppingResult): ListShoppingUiState {
+        throw unsupportedReduceCase()
+    }
 
     private infix fun ErrorUiState.reduceWith(result: ListShoppingResult) = when (result) {
-        is ListShoppingResult.GetListListShoppingResult.InProgress -> LoadingUiState
+        is GetListListShoppingResult.InProgress -> LoadingUiState
         else -> throw unsupportedReduceCase()
     }
     private infix fun EmptyUiState.reduceWith(result: ListShoppingResult) = when (result) {
-        is ListShoppingResult.GetListListShoppingResult.InProgress -> LoadingUiState
+        is GetListListShoppingResult.InProgress -> LoadingUiState
         else -> throw unsupportedReduceCase()
     }
     private infix fun DefaultUiState.reduceWith(result: ListShoppingResult) = when (result) {
-        is ListShoppingResult.GetListListShoppingResult.InProgress -> LoadingUiState
+        is GetListListShoppingResult.InProgress -> LoadingUiState
         else -> throw unsupportedReduceCase()
     }
 
