@@ -3,7 +3,11 @@
 ![State](https://img.shields.io/badge/Kotlin-v1.5.31-blueviolet)
 ![State](https://img.shields.io/badge/Gradle-v7.3.3-blue)
 
-La arquitectura MVI tiene como objetivo simplificar la gestión de los estados y los flujos de usuarios. Además, permite la escalabilidad del código y facilita las pruebas unitarias. 
+## ¿Porqué usar MVI?
+
+- Maneja una única fuente de la verdad orquestada por el Reducer, simplificando la gestión de los estados
+- Permite separar el código en componentes más pequeños y reutilizables, lo que ayuda a la lectura, mantenimiento y escalabilidad del código.
+- Facilita el desarrollo de los test unitarios.
 
 ## Desglosando MVI (Model-View-Intent)
 
