@@ -8,7 +8,7 @@ La arquitectura MVI tiene como objetivo simplificar la gestión de los estados y
 ## Desglosando MVI (Model-View-Intent)
 
 ## Model
-Contiene una representación de estados de la interfaz, la cual es cambiada con lógica reductora. Los cambios de datos se propagan a la capa de vista como un flujo de estados.
+Contiene una representación de un estado, la cual es cambiada con lógica reductora. Los cambios de datos se propagan a la capa de vista como un flujo de estados.
 
 ¿Cómo se representan los estados si quiero hacer un flujo de recuperación de datos desde el servidor?
 
