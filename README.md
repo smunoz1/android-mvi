@@ -234,4 +234,6 @@ class UserIntentHandler {
 - Aplicar flujo MVI en proyecto.
 - Crear un flujo MVI en repositorio de evaluación.
 
+## Referencias de apoyo
+[![ver video](https://i1.ytimg.com/vi/lNqCe0zbyLY/sddefault.jpg)](https://www.youtube.com/watch?v=lNqCe0zbyLY)
 
