@@ -3,7 +3,7 @@
 ![State](https://img.shields.io/badge/Kotlin-v1.5.31-blueviolet)
 ![State](https://img.shields.io/badge/Gradle-v7.3.3-blue)
 
-## ¿Porqué usar MVI?
+## ¿Por qué usar MVI?
 
 - Maneja una única fuente de la verdad orquestada por el Reducer, simplificando la gestión de los estados
 - Permite separar el código en componentes más pequeños y reutilizables, lo que ayuda a la lectura, mantenimiento y escalabilidad del código.
