@@ -163,44 +163,6 @@ internal sealed class UserUiState {
 }
 ```
 
-- **ViewModel**: es el encargado de mantener el flujo de comunicación entre todas los componentes.
-
-```
-internal class UserViewModel : ViewModel() {
-    private val reducer = UserReducer()
-    private val processor = UserProcessor()
-
-    val defaultUiState: UserUiState = UserUiState.DefaultUiState
-    private val uiState: MutableStateFlow<UserUiState> = MutableStateFlow(defaultUiState)
-
-    fun processUserIntentsAndObserveUiStates(
-        userIntents: Flow<UserUIntent>,
-        coroutineScope: CoroutineScope = viewModelScope,
-    ) {
-        userIntents.buffer()
-            .flatMapMerge { userIntent ->
-                processor.actionProcessor(userIntent.toAction())
-            }
-            .scan(defaultUiState) { previousUiState, result ->
-                with(reducer) { previousUiState reduceWith result }
-            }
-            .onEach {
-                uiState.value = it
-            }
-            .launchIn(coroutineScope)
-    }
-
-    private fun UserUIntent.toAction(): UserAction {
-        return when (this) {
-            UserUIntent.PressingBtnGetListUserUIntent -> UserAction.GetListUserAction
-            UserUIntent.RetryUIntent -> UserAction.GetListUserAction
-        }
-    }
-
-    fun uiState(): StateFlow<UserUiState> = uiState
-}
-```
-
 - **IntentHandler**: Facilita la creación de funciones que van a emitir un ```Intent``` desde la vista. Se visualiza en el código como una ```class``` y su creación queda expuesta en la capa de UI de la estructura de package.
 ```
 class UserIntentHandler {
@@ -226,6 +188,51 @@ class UserIntentHandler {
 - **Paso de datos entre componentes**: Si se necesita pasar datos entre componentes se pueden utilizar ```data class``` en las ```sealed class```. Ejemplo:
 
 ```object ErrorUiState : UserUiState()``` cambia a ```data class ErrorUiState(val message: String) : UserUiState()```
+## ¿Quién se encarga de unir todos estos componentes y el flujo MVI funcione?
+![Ct9zh3oWcAAZBwy](https://user-images.githubusercontent.com/104868802/210827375-29a236e3-564a-4142-9e48-5c51f29c8525.jpeg)
+
+El encargado es el **ViewModel**. Este trabaja de la siguiente forma:
+-   Toma un ```intent``` y lo transforma a un ```action```.
+-   El ```action``` es pasado al ```processor```.
+-   El ```processor``` se encarga de evaluar este ```action``` y retorna un ```result```.
+-   Este ```result``` es evaluado por el ```reducer``` y retorna un nuevo ```state```.
+-   Este ```state``` modifica a MutableStateFlow que puede ser escuchado por la UI.
+
+```
+internal class UserViewModel : ViewModel() {
+    private val reducer = UserReducer()
+    private val processor = UserProcessor()
+
+    val defaultUiState: UserUiState = UserUiState.DefaultUiState
+    private val uiState: MutableStateFlow<UserUiState> = MutableStateFlow(defaultUiState)
+
+    fun processUserIntentsAndObserveUiStates(
+        userIntents: Flow<UserUIntent>,
+        coroutineScope: CoroutineScope = viewModelScope,
+    ) {
+        userIntents.buffer()
+            .flatMapMerge { userIntent ->
+                processor.actionProcessor(userIntent.toAction()) //Se pasa action a processor y retorna un result.
+            }
+            .scan(defaultUiState) { previousUiState, result ->
+                with(reducer) { previousUiState reduceWith result } //Se pasa result a reducer y retorna un state.
+            }
+            .onEach {
+                uiState.value = it //se setea con nuevo valor state.
+            }
+            .launchIn(coroutineScope)
+    }
+
+    private fun UserUIntent.toAction(): UserAction {
+        return when (this) {
+            UserUIntent.PressingBtnGetListUserUIntent -> UserAction.GetListUserAction
+            UserUIntent.RetryUIntent -> UserAction.GetListUserAction
+        }
+    }
+
+    fun uiState(): StateFlow<UserUiState> = uiState
+}
+```
 
 ![image](https://user-images.githubusercontent.com/104868802/209144660-5865736b-6f19-48b8-ac46-c175d4bdd91b.png)
 
